@@ -1,6 +1,7 @@
 #include "Token.hpp"
 
-Token::Token(TokenType type, std::string lexeme, std::string literal, int line)
+template<typename T>
+Token<T>::Token(TokenType type, std::string lexeme, T literal, int line)
 {
     _type = type;
     _lexeme = lexeme;
@@ -8,7 +9,8 @@ Token::Token(TokenType type, std::string lexeme, std::string literal, int line)
     _line = line;
 }
 
-std::string Token::toString()
+template<typename T>
+std::string Token<T>::toString()
 {
-    return _lexeme;
+    return std::to_string((int)_type);
 }

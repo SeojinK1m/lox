@@ -1,2 +1,2 @@
 # lox
-My implementation for the lox programming language
+My implementation for the lox programming language using C++

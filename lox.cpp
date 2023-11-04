@@ -10,15 +10,6 @@ enum Errors {
     FileNotFound,
 };
 
-//  run sourcecode
-int run(std::string sourceCode) {
-    Scanner scanner(sourceCode);
-    std::vector<Token> tokens = scanner.scanTokens();
-    for (Token token : tokens) {
-        std::cout << token.toString() << std::endl;
-    }
-}
-
 //  report error
 void report(int line, std::string where, std::string message) {
     std::cout << "[line " << line << "] Error" << where << ": " << message << std::endl;
@@ -27,6 +18,15 @@ void report(int line, std::string where, std::string message) {
 //  Error handling
 void error(int line, std::string message) {
     report(line, "", message);
+}
+
+//  run sourcecode
+int run(std::string sourceCode) {
+    Scanner scanner(sourceCode, error);
+    std::vector<std::shared_ptr<IToken>> tokens = scanner.scanTokens();
+    for (std::shared_ptr token_ptr : tokens) {
+        std::cout << token_ptr -> toString() << std::endl;
+    }
 }
 
 //  Global variable to keep track of whether there was an error while interpreting

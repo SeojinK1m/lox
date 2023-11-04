@@ -1,3 +1,5 @@
+CXXFLAGS = -std=c++17
+
 lox: lox.o Scanner.o Token.o
 	g++ lox.o Scanner.o Token.o -o lox
 
